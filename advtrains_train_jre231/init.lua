@@ -74,7 +74,9 @@ advtrains.register_wagon("KuHa_E231", {
 	is_locomotive=true,
 	collisionbox = {-1.0,-0.5,-1.0, 1.0,2.5,1.0},
 	drops={"default:steelblock 4"},
-}, S("KuHa_E231"), "advtrains_KuHa_E231_inv.png")
+	horn_sound = "advtrains_train_jre231_horn",
+
+}, S("KuHa_E231"), "advtrains_KuHa_E231_inv.png^advtrains_jre231_inv_overlay_right.png^advtrains_jre231_inv_overlay_middle.png")
 
 advtrains.register_wagon("MoHa_E231", {
 	mesh="advtrains_MoHa_E231.b3d",
@@ -142,7 +144,7 @@ advtrains.register_wagon("MoHa_E231", {
 	wagon_span=2.3,
 	collisionbox = {-1.0,-0.5,-1.0, 1.0,2.5,1.0},
 	drops={"default:steelblock 4"},
-}, S("MoHa_E231"), "advtrains_MoHa_E231_inv.png")
+}, S("MoHa_E231"), "advtrains_MoHa_E231_inv.png^advtrains_jre231_inv_overlay_middle.png^advtrains_jre231_inv_overlay_left.png^advtrains_jre231_inv_overlay_right.png^advtrains_jre231_inv_overlay_top.png")
 
 advtrains.register_wagon("SaHa_E231", {
 	mesh="advtrains_SaHa_E231.b3d",
@@ -210,7 +212,7 @@ advtrains.register_wagon("SaHa_E231", {
 	wagon_span=2.3,
 	collisionbox = {-1.0,-0.5,-1.0, 1.0,2.5,1.0},
 	drops={"default:steelblock 4"},
-}, S("SaHa_E231"), "advtrains_SaHa_E231_inv.png")
+}, S("SaHa_E231"), "advtrains_SaHa_E231_inv.png^advtrains_jre231_inv_overlay_left.png^advtrains_jre231_inv_overlay_right.png")
 
 advtrains.register_wagon("MoHa_E230", {
 	mesh="advtrains_MoHa_E230.b3d",
@@ -278,4 +280,4 @@ advtrains.register_wagon("MoHa_E230", {
 	wagon_span=2.3,
 	collisionbox = {-1.0,-0.5,-1.0, 1.0,2.5,1.0},
 	drops={"default:steelblock 4"},
-}, S("MoHa_E230"), "advtrains_MoHa_E230_inv.png")
+}, S("MoHa_E230"), "advtrains_MoHa_E230_inv.png^advtrains_jre231_inv_overlay_middle.png^advtrains_jre231_inv_overlay_left.png^advtrains_jre231_inv_overlay_right.png")
