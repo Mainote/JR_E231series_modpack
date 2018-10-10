@@ -77,6 +77,27 @@ advtrains.register_wagon("KuHa_E231", {
 	collisionbox = {-1.0,-0.5,-1.0, 1.0,2.5,1.0},
 	drops={"default:steelblock 4"},
 	horn_sound = "advtrains_train_jre231_horn",
+                                       
+	custom_on_velocity_change = function(self, velocity, old_velocity, dtime)
+		if not velocity or not old_velocity then return end
+		if old_velocity == 0 and velocity > 0 then
+			if self.sound_arrive_handle then
+				minetest.sound_stop(self.sound_arrive_handle)
+				self.sound_arrive_handle = nil
+			end
+			self.sound_depart_handle = minetest.sound_play("advtrains_train_jre231_depart", {object = self.object})
+		end
+		if velocity < 2 and (old_velocity >= 2 or old_velocity == velocity) and not self.sound_arrive_handle then
+			if self.sound_depart_handle then
+				minetest.sound_stop(self.sound_depart_handle)
+				self.sound_depart_handle = nil
+			end
+			self.sound_arrive_handle = minetest.sound_play("advtrains_train_jre231_arrive", {object = self.object})
+		elseif (velocity > old_velocity) and self.sound_arrive_handle then
+			minetest.sound_stop(self.sound_arrive_handle)
+			self.sound_arrive_handle = nil
+		end
+	end,
 
 }, S("KuHa_E231"), "advtrains_KuHa_E231_inv.png^advtrains_jre231_inv_overlay_right.png^advtrains_jre231_inv_overlay_middle.png")
 
