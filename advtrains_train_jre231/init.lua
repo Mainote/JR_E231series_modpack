@@ -60,11 +60,13 @@ advtrains.register_wagon("KuHa_E231", {
 	doors={
 		open={
 			[-1]={frames={x=0, y=40}, time=1},
-			[1]={frames={x=80, y=120}, time=1}
+			[1]={frames={x=80, y=120}, time=1},
+                  sound = "advtrains_train_jre231_door_chime",
 		},
 		close={
 			[-1]={frames={x=40, y=80}, time=1},
-			[1]={frames={x=120, y=160}, time=1}
+			[1]={frames={x=120, y=160}, time=1},
+			sound = "advtrains_train_jre231_door_chime",
 		}
 	},
 	door_entry={-1},
