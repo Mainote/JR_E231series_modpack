@@ -5,6 +5,25 @@ else
     S = function(s,a,...)a={a,...}return s:gsub("@(%d+)",function(n)return a[tonumber(n)]end)end
 end
 
+local function jr_set_livery(self, puncher, itemstack,data)
+		-- Get color data
+	local meta = itemstack:get_meta()
+	local color = meta:get_string("paint_color")
+	local alpha = tonumber(meta:get_string("alpha"))
+	if color then
+		data.livery = self.base_texture.."^("..self.base_livery.."^[colorize:"..color..":255)" -- livery texture has no own texture....
+		self:set_textures(data)
+	end
+end
+
+local function	jr_set_textures(self, data)
+	if data.livery then
+		self.object:set_properties({
+				textures={data.livery}
+		})
+	end
+end
+
 advtrains.register_wagon("KuHa_E231", {
 	mesh="advtrains_KuHa_E231.b3d",
 	textures = {"advtrains_KuHa_E231.png"},
@@ -77,6 +96,10 @@ advtrains.register_wagon("KuHa_E231", {
 	collisionbox = {-1.0,-0.5,-1.0, 1.0,2.5,1.0},
 	drops={"default:steelblock 4"},
 	horn_sound = "advtrains_train_jre231_horn",
+	base_texture = "advtrains_KuHa_E231.png",
+	base_livery = "advtrains_KuHa_E231_livery.png",
+	set_textures = jr_set_textures,
+	set_livery = jr_set_livery,
                                        
 	custom_on_velocity_change = function(self, velocity, old_velocity, dtime)
 		if not velocity or not old_velocity then return end
@@ -168,6 +191,10 @@ advtrains.register_wagon("MoHa_E231", {
 	visual_size = {x=1, y=1},
 	wagon_span=2.3,
 	collisionbox = {-1.0,-0.5,-1.0, 1.0,2.5,1.0},
+	base_texture = "advtrains_MoHa_E231.png",
+	base_livery = "advtrains_MoHa_E231_livery.png",
+	set_textures = jr_set_textures,
+	set_livery = jr_set_livery,
 	drops={"default:steelblock 4"},
 }, S("MoHa_E231"), "advtrains_MoHa_E231_inv.png^advtrains_jre231_inv_overlay_middle.png^advtrains_jre231_inv_overlay_left.png^advtrains_jre231_inv_overlay_right.png^advtrains_jre231_inv_overlay_top.png")
 
@@ -239,6 +266,10 @@ advtrains.register_wagon("SaHa_E231", {
 	wagon_span=2.3,
 	collisionbox = {-1.0,-0.5,-1.0, 1.0,2.5,1.0},
 	drops={"default:steelblock 4"},
+	base_texture = "advtrains_SaHa_E231.png",
+	base_livery = "advtrains_MoHa_E231_livery.png",
+	set_textures = jr_set_textures,
+	set_livery = jr_set_livery,
 }, S("SaHa_E231"), "advtrains_SaHa_E231_inv.png^advtrains_jre231_inv_overlay_left.png^advtrains_jre231_inv_overlay_right.png")
 
 advtrains.register_wagon("MoHa_E230", {
@@ -308,5 +339,9 @@ advtrains.register_wagon("MoHa_E230", {
 	visual_size = {x=1, y=1},
 	wagon_span=2.3,
 	collisionbox = {-1.0,-0.5,-1.0, 1.0,2.5,1.0},
+	base_texture = "advtrains_MoHa_E230.png",
+	base_livery = "advtrains_MoHa_E231_livery.png",
+	set_textures = jr_set_textures,
+	set_livery = jr_set_livery,
 	drops={"default:steelblock 4"},
 }, S("MoHa_E230"), "advtrains_MoHa_E230_inv.png^advtrains_jre231_inv_overlay_middle.png^advtrains_jre231_inv_overlay_left.png^advtrains_jre231_inv_overlay_right.png")
