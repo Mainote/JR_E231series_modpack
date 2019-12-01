@@ -10,7 +10,7 @@ local function jr_set_livery(self, puncher, itemstack,data)
 	local meta = itemstack:get_meta()
 	local color = meta:get_string("paint_color")
 	local alpha = tonumber(meta:get_string("alpha"))
-	if color then
+	if color and color:find("#%x%x%x%x%x%x") then
 		data.livery = self.base_texture.."^("..self.base_livery.."^[colorize:"..color..":255)" -- livery texture has no own texture....
 		self:set_textures(data)
 	end
